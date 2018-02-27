@@ -62,15 +62,15 @@ class ProfileExtractorIndeed(ProfileExtractor):
             skills_string = has_additional_info()
             self.skills.append(skills_string)
 
-html_page = '/home/home/environments/pipl_test/samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html'
-html_page = '/home/home/environments/pipl_test/samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html'
-html_page = '/home/home/environments/pipl_test/samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html'
-soup = ProfileExtractorIndeed(html_page)
-
-print(soup.get_name())
-print("Printing Skills:")
-for item in soup.skills:
-    print(item)
-print("Printing Education:")
-for item in soup.education:
-    print(item)
+# html_page = '/home/home/environments/pipl_test/samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html'
+# html_page = '/home/home/environments/pipl_test/samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html'
+# html_page = '/home/home/environments/pipl_test/samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html'
+# soup = ProfileExtractorIndeed(html_page)
+#
+# print(soup.get_name())
+# print("Printing Skills:")
+# for item in soup.skills:
+#     print(item)
+# print("Printing Education:")
+# for item in soup.education:
+#     print(item)

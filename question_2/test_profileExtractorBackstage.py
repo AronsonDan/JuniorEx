@@ -6,15 +6,15 @@ from question_2.profile_extractor_backstage import ProfileExtractorBackstage
 class TestProfileExtractorBackstage(TestCase):
     def setUp(self):
         self.backstage_profile_html_ok_1 = ProfileExtractorBackstage(
-            '/home/home/environments/pipl_test/samples/backstage/Amanda Forstrom - Professional Profile, Photos, and Video Reels on Backstage -.html')
+            '../samples/backstage/Amanda Forstrom - Professional Profile, Photos, and Video Reels on Backstage -.html')
         self.backstage_profile_html_ok_2 = ProfileExtractorBackstage(
-            '/home/home/environments/pipl_test/samples/backstage/Joshua Packard - Professional Profile, Photos, and Video Reels on Backstage -.html')
+            '../samples/backstage/Joshua Packard - Professional Profile, Photos, and Video Reels on Backstage -.html')
 
         self.backstage_profile_html_ok_3 = ProfileExtractorBackstage(
-            '/home/home/environments/pipl_test/samples/backstage/Mark J. Quiles - Professional Profile, Photos, and Video Reels on Backstage -.html')
+            '../samples/backstage/Mark J. Quiles - Professional Profile, Photos, and Video Reels on Backstage -.html')
 
         self.backstage_profile_html_no_name = ProfileExtractorBackstage(
-            '/home/home/environments/pipl_test/samples/backstage/no_name.html')
+            '../samples/backstage/no_name.html')
 
     def test_validate_template(self):
         self.assertTrue(self.backstage_profile_html_ok_1.is_valid)

@@ -6,11 +6,11 @@ from question_2.profile_extractor_indeed import ProfileExtractorIndeed
 class TestProfileExtractorIndeed(TestCase):
     def setUp(self):
         self.indeed_profile_html_ok_1 = ProfileExtractorIndeed(
-            '/home/home/environments/pipl_test/samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html')
+            '../samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html')
         self.indeed_profile_html_ok_2 = ProfileExtractorIndeed(
-            '/home/home/environments/pipl_test/samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html')
+            '../samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html')
         self.indeed_profile_html_ok_3 = ProfileExtractorIndeed(
-            '/home/home/environments/pipl_test/samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html')
+            '../samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html')
 
     def test_validate_template(self):
         self.assertTrue(self.indeed_profile_html_ok_1.is_valid)

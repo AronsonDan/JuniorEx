@@ -6,12 +6,12 @@ from question_2.profile_extractor_linkedin import ProfileExtractorLinkedIn
 class TestProfileExtractorLinkedIn(TestCase):
     def setUp(self):
         self.linkedIn_profile_html_ok_1 = ProfileExtractorLinkedIn(
-            '/home/home/environments/pipl_test/samples/linkedin/1003_172bc83cb13a5022.html')
+            '../samples/linkedin/1003_172bc83cb13a5022.html')
         self.linkedIn_profile_html_ok_2 = ProfileExtractorLinkedIn(
-            '/home/home/environments/pipl_test/samples/linkedin/1003_75579261d7f86c3f.html')
+            '../samples/linkedin/1003_75579261d7f86c3f.html')
 
         self.linkedIn_profile_html_no_name = ProfileExtractorLinkedIn(
-            '/home/home/environments/pipl_test/samples/linkedin/no_name.html')
+            '../samples/linkedin/no_name.html')
 
     def test_validate_template(self):
         self.assertTrue(self.linkedIn_profile_html_ok_1.is_valid)
