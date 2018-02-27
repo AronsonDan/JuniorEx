@@ -15,10 +15,6 @@ class ProfileExtractorBackstage(ProfileExtractor):
         if self.profile_json and self.profile_json['display_name']:
             self.is_valid = True
 
-    def set_skills(self):
-        for profile_item in self.profile_json['skills']:
-            self.skills.append(profile_item['name'])
-
     def set_name(self):
         self.name = self.profile_json['display_name']
 
@@ -29,6 +25,10 @@ class ProfileExtractorBackstage(ProfileExtractor):
                 'years': education_item['created_datetime'],
                 'institution_name': education_item['school']
             })
+
+    def set_skills(self):
+        for profile_item in self.profile_json['skills']:
+            self.skills.append(profile_item['name'])
 
     def parse_js(self):
         data = str(self.html_page.find_all("script")[9])
@@ -42,8 +42,6 @@ class ProfileExtractorBackstage(ProfileExtractor):
             self.education_json = json_object_education
         except JSONDecodeError:
             self.is_valid = False
-
-
 
 # html_page = '/home/home/environments/pipl_test/samples/backstage/Amanda Forstrom - Professional Profile, Photos, and Video Reels on Backstage -.html'
 # html_page = '/home/home/environments/pipl_test/samples/backstage/Joshua Packard - Professional Profile, Photos, and Video Reels on Backstage -.html'
