@@ -51,7 +51,7 @@ Within "question_1" directory you will be able to find:
 #### Solution description:
 The solution was met by implementing a class with abstract methods which all of the other objects will inherent from. in other words, the base class will act as an interface and in case a new template will be required a new object will be defined and will an implementation of the base class.
 The HTML parsing framework that was chosen for the given solution is
-[beautiful soup:](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+[beautiful soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
  
 
 
