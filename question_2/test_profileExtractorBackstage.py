@@ -23,20 +23,20 @@ class TestProfileExtractorBackstage(TestCase):
         self.assertFalse(self.backstage_profile_html_no_name.is_valid)
 
     def test_set_name(self):
-        self.assertEqual(self.backstage_profile_html_ok_1.name, 'Amanda Forstrom')
-        self.assertEqual(self.backstage_profile_html_ok_2.name, 'Joshua Packard')
-        self.assertEqual(self.backstage_profile_html_ok_3.name, 'Mark J. Quiles')
-        self.assertIsNone(self.backstage_profile_html_no_name.name)
+        self.assertEqual(self.backstage_profile_html_ok_1.get_name(), 'Amanda Forstrom')
+        self.assertEqual(self.backstage_profile_html_ok_2.get_name(), 'Joshua Packard')
+        self.assertEqual(self.backstage_profile_html_ok_3.get_name(), 'Mark J. Quiles')
+        self.assertIsNone(self.backstage_profile_html_no_name.get_name())
 
     def test_set_education(self):
-        self.assertEqual(self.backstage_profile_html_ok_1.education, [
+        self.assertEqual(self.backstage_profile_html_ok_1.get_education(), [
             {
                 'years': '1970-01-01T00:00:00',
                 'major': 'MFA Acting',
                 'institution_name': 'University of South Carolina'
             }
         ])
-        self.assertEqual(self.backstage_profile_html_ok_2.education, [
+        self.assertEqual(self.backstage_profile_html_ok_2.get_education(), [
             {'major': '2 week summer acting for film', 'institution_name': 'NY Film Academy',
              'years': '2017-09-11T14:40:12'},
             {'major': 'Various acting classes', 'institution_name': "Actor's Technique NY",
@@ -46,7 +46,7 @@ class TestProfileExtractorBackstage(TestCase):
             {'major': 'NA', 'institution_name': 'Joyful Singing', 'years': '2017-01-24T18:09:59'},
             {'major': 'summer class', 'institution_name': 'A Class Act NY', 'years': '2017-01-24T18:09:59'}
         ])
-        self.assertEqual(self.backstage_profile_html_ok_3.education, [
+        self.assertEqual(self.backstage_profile_html_ok_3.get_education(), [
             {'institution_name': 'McKenzie/ Delevan Studios', 'major': 'Voice', 'years': '1970-01-01T00:00:00'},
             {'institution_name': 'Tim Welch Music', 'major': 'Voice', 'years': '1970-01-01T00:00:00'},
             {'institution_name': 'Coupe Dance Studio', 'major': 'Tap Dance/ Theatre Dance',
@@ -61,10 +61,10 @@ class TestProfileExtractorBackstage(TestCase):
             {'institution_name': 'Calvin College', 'major': 'B. A. - Theatre/ Telecommunications',
              'years': '1970-01-01T00:00:00'}
         ])
-        self.assertEqual(self.backstage_profile_html_no_name.education, [])
+        self.assertEqual(self.backstage_profile_html_no_name.get_education(), [])
 
     def test_set_skills(self):
-        self.assertEqual(self.backstage_profile_html_ok_1.skills, [
+        self.assertEqual(self.backstage_profile_html_ok_1.get_skills(), [
             'Music/Musician',
             'Accents/Dialects',
             'Fight Training',
@@ -85,8 +85,8 @@ class TestProfileExtractorBackstage(TestCase):
             'Pointe',
             'Basic Ballroom'
         ])
-        self.assertEqual(self.backstage_profile_html_ok_2.skills, [])
-        self.assertEqual(self.backstage_profile_html_ok_3.skills, [
+        self.assertEqual(self.backstage_profile_html_ok_2.get_skills(), [])
+        self.assertEqual(self.backstage_profile_html_ok_3.get_skills(), [
             'Bilingual/ Biliterate - English/ Spanish',
             'Can Drive Stick Shift (Manual)',
             'Certified School Teacher/ Administrator',
@@ -100,4 +100,4 @@ class TestProfileExtractorBackstage(TestCase):
             'Tap',
             'Works Well With Children'
         ])
-        self.assertEqual(self.backstage_profile_html_no_name.skills, [])
+        self.assertEqual(self.backstage_profile_html_no_name.get_skills(), [])

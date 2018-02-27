@@ -19,12 +19,12 @@ class TestProfileExtractorLinkedIn(TestCase):
         self.assertFalse(self.linkedIn_profile_html_no_name.is_valid)
 
     def test_set_name(self):
-        self.assertEqual(self.linkedIn_profile_html_ok_1.name, 'Irit Schwartz')
-        self.assertEqual(self.linkedIn_profile_html_ok_2.name, 'Elmar Bergonzini')
-        self.assertIsNone(self.linkedIn_profile_html_no_name.name)
+        self.assertEqual(self.linkedIn_profile_html_ok_1.get_name(), 'Irit Schwartz')
+        self.assertEqual(self.linkedIn_profile_html_ok_2.get_name(), 'Elmar Bergonzini')
+        self.assertIsNone(self.linkedIn_profile_html_no_name.get_name())
 
     def test_set_education(self):
-        self.assertEqual(self.linkedIn_profile_html_ok_1.education, [
+        self.assertEqual(self.linkedIn_profile_html_ok_1.get_education(), [
             {
                 'years': '2010 – 2011',
                 'institution_name': 'The Open University',
@@ -35,17 +35,17 @@ class TestProfileExtractorLinkedIn(TestCase):
                 'major': 'BA in Business Management specializing in Human Resources'
             }
         ])
-        self.assertEqual(self.linkedIn_profile_html_ok_2.education,
+        self.assertEqual(self.linkedIn_profile_html_ok_2.get_education(),
                          [{
                              'institution_name': "Libera Università 'Maria SS Assunta'",
                              'major': 'editoria e giornalismo',
                              'years': '2009 – 2014'
                          }]
                          )
-        self.assertEqual(self.linkedIn_profile_html_no_name.education, [])
+        self.assertEqual(self.linkedIn_profile_html_no_name.get_education(), [])
 
     def test_set_skills(self):
-        self.assertEqual(self.linkedIn_profile_html_ok_1.skills, [
+        self.assertEqual(self.linkedIn_profile_html_ok_1.get_skills(), [
             'Deferred Compensation',
             'Recruiting',
             'Organizational...',
@@ -54,5 +54,5 @@ class TestProfileExtractorLinkedIn(TestCase):
             'HRIS',
             'Onboarding'
         ])
-        self.assertEqual(self.linkedIn_profile_html_ok_2.skills, [])
-        self.assertEqual(self.linkedIn_profile_html_no_name.skills, [])
+        self.assertEqual(self.linkedIn_profile_html_ok_2.get_skills(), [])
+        self.assertEqual(self.linkedIn_profile_html_no_name.get_skills(), [])

@@ -18,12 +18,12 @@ class TestProfileExtractorIndeed(TestCase):
         self.assertTrue(self.indeed_profile_html_ok_3.is_valid)
 
     def test_set_name(self):
-        self.assertIsNone(self.indeed_profile_html_ok_1.name)
-        self.assertIsNone(self.indeed_profile_html_ok_2.name)
-        self.assertIsNone(self.indeed_profile_html_ok_3.name)
+        self.assertIsNone(self.indeed_profile_html_ok_1.get_name())
+        self.assertIsNone(self.indeed_profile_html_ok_2.get_name())
+        self.assertIsNone(self.indeed_profile_html_ok_3.get_name())
 
     def test_set_education(self):
-        self.assertEqual(self.indeed_profile_html_ok_1.education, [
+        self.assertEqual(self.indeed_profile_html_ok_1.get_education(), [
             {'major': 'MSc in International Economics',
              'institution_name': 'London Metropolitan Business School, London Metropolitan University - London',
              'years': 'September 2011 to October 2012'},
@@ -35,17 +35,17 @@ class TestProfileExtractorIndeed(TestCase):
              'years': 'September 2006 to June 2009'},
             {'major': 'PhD in Economics', 'institution_name': 'City University - London', 'years': None}
         ])
-        self.assertEqual(self.indeed_profile_html_ok_2.education, [
+        self.assertEqual(self.indeed_profile_html_ok_2.get_education(), [
             {'years': 'January 1983 to January 1988', 'major': 'Bachelor of Science in Civil Engineering',
              'institution_name': 'University of Nueva Caceres'}
         ]
                          )
-        self.assertEqual(self.indeed_profile_html_ok_3.education, [
+        self.assertEqual(self.indeed_profile_html_ok_3.get_education(), [
             {'institution_name': 'Skidmore College', 'major': 'B.A. in Psychology & Sociology', 'years': None},
             {'institution_name': 'Baruch College', 'major': 'Industrial Organizational Psychology', 'years': None}
         ])
 
     def test_set_skills(self):
-        self.assertEqual(self.indeed_profile_html_ok_1.skills, [])
-        self.assertEqual(self.indeed_profile_html_ok_2.skills, [])
-        self.assertEqual(self.indeed_profile_html_ok_3.skills, [])
+        self.assertEqual(self.indeed_profile_html_ok_1.get_skills(), [])
+        self.assertEqual(self.indeed_profile_html_ok_2.get_skills(), [])
+        self.assertEqual(self.indeed_profile_html_ok_3.get_skills(), [])

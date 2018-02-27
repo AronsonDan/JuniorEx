@@ -15,6 +15,10 @@ class TestNode(TestCase):
         self.node_3 = Node(self.emp_3)
 
     def test_add_child_no_children(self):
+        """
+        Test that the solution
+        :return:
+        """
         test = self.node_1.add_child(self.node_2)
 
         self.assertTrue(test)

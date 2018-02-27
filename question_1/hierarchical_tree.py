@@ -92,7 +92,7 @@ class HierarchicalTree:
 
     def get_node(self, employee_id, root=None):
         """
-
+        A search method that runs through the nodes of the tree and finds an employee by the employee ID
         :param employee_id: the id of the employee that wants to be found
         :param root: the root of the sub-tree
         :return: a node of employee in case found

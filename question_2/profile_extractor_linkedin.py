@@ -46,17 +46,3 @@ class ProfileExtractorLinkedIn(ProfileExtractor):
     def set_skills(self):
         for element in self.html_page.find_all('span', {'class': "endorse-item-name-text"}):
             self.skills.append(element.text)
-
-
-# html_page = '/home/home/environments/pipl_test/samples/linkedin/1003_172bc83cb13a5022.html'
-# html_page = '/home/home/Downloads/JuniorEx/samples/linkedin/1003_75579261d7f86c3f.html'
-# # html_page = '/home/home/environments/pipl_test/samples/linkedin/no_name.html'
-# soup = ProfileExtractorLinkedIn(html_page)
-#
-# print(soup.get_name())
-#
-# for item in soup.skills:
-#     print(item)
-#
-# for item in soup.education:
-#     print(item)
