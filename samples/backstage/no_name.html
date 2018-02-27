@@ -1,0 +1,474 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UA4GUVVaGwECUllRDwc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(20),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,c){try{h?h-=1:o(c||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,s.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:s.now();i("err",[t,n])}var i=t("handle"),a=t(21),c=t("ee"),s=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",h=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(13),t(12),"addEventListener"in window&&t(6),s.xhrWrappable&&t(14),d=!0)}c.on("fn-start",function(t,e,n){d&&(h+=1)}),c.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),c.on("fn-end",function(){d&&!this.thrown&&h>0&&(h-=1)}),c.on("internal-error",function(t){i("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,S=y.hash,this[u]=b.now()}function o(){M--,y.hash!==S&&i(0,!0);var t=b.now();this[l]=~~this[l]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=b.now()})}var c="-start",s="-end",f="-body",u="fn"+c,d="fn"+s,p="cb"+c,h="cb"+s,l="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,b=t("loader");if(w[v]&&b.xhrWrappable){var g=t(10),x=t(11),E=t(8),P=t(6),O=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),N=j.get("tracer");t(15),b.features.spa=!0;var S,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(h,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),P.buffer([u]),O.buffer(["setTimeout"+s,"clearTimeout"+c,u]),T.buffer([u,"new-xhr","send-xhr"+c]),R.buffer([m+c,m+"-done",m+f+c,m+f+s]),E.buffer(["newURL"]),g.buffer([u]),x.buffer(["propagate",p,h,"executor-err","resolve"+c]),N.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+c),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+c),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),c=t(12),s="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",h="-start",l="-end",m="fn"+h,v="fn"+l,w="bstTimer",y="pushState",b=t("loader");b.features.stn=!0,t(8);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=b.now())}),o.on(v,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,b.now()])}),a.on(m,function(t,e,n){this.bstStart=b.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,b.now(),this.bstType])}),c.on(m,function(){this.bstStart=b.now()}),c.on(v,function(t,e){i(w,[e,this.bstStart,b.now(),"requestAnimationFrame"])}),o.on(y+h,function(t){this.time=b.now(),this.startPath=location.pathname+location.hash}),o.on(y+l,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+s]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+s]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+s]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(23)(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(20);e.exports=o;var a=window,c="fetch-",s=c+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,h="prototype";u&&d&&p&&(i(f,function(t,e){r(u[h],e,s),r(d[h],e,s)}),r(a,"fetch",c),o.on(c+"end",function(t,e){var n=this;e?e.clone().arrayBuffer().then(function(t){n.rxSize=t.byteLength,o.emit(c+"done",[null,e],n)}):o.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(23)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){s.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){s.emit("jsonp-error",[],p),s.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=c(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),s.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function c(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var s=t("ee").get("jsonp"),f=t(23)(s);if(e.exports=s,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,h=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,h,"dom-"),f.inPlace(HTMLHeadElement.prototype,h,"dom-"),f.inPlace(HTMLBodyElement.prototype,h,"dom-"),s.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(23)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=c(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(23),a=t("ee").get("promise"),c=i(a),s=t(20),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;s(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),c=f.resolve(i);return c}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),s(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=c(t[0],"resolve-",this),t[1]=c(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),c.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=c(t[0],"cb-",this),t[1]=c(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(23)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(23)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",c)}function i(t){b.push(t),l&&(x?x.then(a):v?v(a):(E=-E,P.data=E))}function a(){for(var t=0;t<b.length;t++)r([],b[t]);b.length&&(b=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(23)(u),p=NREUM.o,h=p.XHR,l=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],b=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(h,g),g.prototype=h.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),l){var x=m&&m.resolve();if(!v&&!m){var E=1,P=document.createTextNode(E);new l(a).observe(P,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return l(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),h=t(19),l=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=l(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<d;c++)e.addEventListener(u[c],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(20),c=t(21),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var l=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(h+"tracer",[f.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw s.emit("fn-err",[arguments,this,t],n),t}finally{s.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){l[e]=o(h+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],21:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],22:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],23:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],c])}u(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+o:o,i,c))}function u(n,r,o){if(!s||e){var i=s;s=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}s=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,c,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),c=l(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[y[n]];return d&&d.push([b,n,r,a]),a}}function h(t,e){w[t]=l(t).concat(e)}function l(t){return w[t]||[]}function m(t){return d[t]=d[t]||o(n)}function v(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var w={},y={},b={on:h,emit:n,get:m,listeners:l,context:e,buffer:v,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var c="nr@context",s=t("gos"),f=t(20),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!x++){var t=g.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)}),s("mark",["onload",a()+g.offset],null,"api");var n=p.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===p.readyState&&i()}function i(){s("mark",["domContent",a()+g.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-g.offset}var c=(new Date).getTime(),s=t("handle"),f=t(20),u=t("ee"),d=window,p=d.document,h="addEventListener",l="attachEvent",m=d.XMLHttpRequest,v=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1071.min.js"},b=m&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:c,now:a,origin:w,features:{},xhrWrappable:b};t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),d[h]("load",r,!1)):(p[l]("onreadystatechange",o),d[l]("onload",r)),s("mark",["firstbyte",c],null,"api");var x=0,E=t(22)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"0d78ad519a","applicationID":"2268386","transactionName":"NgZbN0NRWBECAhVcDQ9MfxZfU0ILDA9OQQMNBlcXbkBEDQUIDVARTxVQBkZDDBIRDgdcDgQ8WBNB","queueTime":0,"applicationTime":270,"agent":""}</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        
+
+<link rel="canonical" href="https://www.backstage.com/u/AmandaForstrom/" />
+
+        <meta name="description" content="Amanda Forstrom: Amanda Forstrom is a transformational and risk-taking actress with experience in theatre, film and TV.  Height: 5&#39;5&#39;&#39;  Weight:  118 lbs.  Eyes: Green  Hair: Auburn
+Measurements:  32B - 25 - 33    Dress/Pant Size: 2    Shirt:  Small" />
+        <meta name="keywords" content="Auditions | Casting calls | Open casting calls | Casting call | Open casting call" />
+        <meta property="fb:app_id" content="111374926453">
+        
+    <meta property="og:title" content="Amanda Forstrom">
+    <meta property="og:description" content="Amanda Forstrom: Amanda Forstrom is a transformational and risk-taking actress with experience in theatre, film and TV.  Height: 5&#39;5&#39;&#39;  Weight:  118 lbs.  Eyes: Green  Hair: Auburn
+Measurements:  32B - 25 - 33    Dress/Pant Size: 2    Shirt:  Small">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://www.backstage.com/u/AmandaForstrom/">
+    <meta property="og:image" content="https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC04MDAtMTIwMA%3D%3D.jpg">
+    <meta property="og:site_name" content="Backstage.com">
+
+        <title>Amanda Forstrom - Professional Profile, Photos, and Video Reels on Backstage - </title>
+        
+        <link rel="icon" type="image/x-icon" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon.ec3f2f54cdc6.ico" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-57x57.f9bd557a72d0.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-114x114.1932b00f4fd0.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-72x72.d397e8518790.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-144x144.d463fe559f5c.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-60x60.06c6cf223fce.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-120x120.99ce853a65a7.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-76x76.5bbb3dd2bd5a.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/apple-touch-icon-152x152.5d012fbb15c3.png" />
+        <link rel="icon" type="image/png" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon-196x196.2f6eb1c260d1.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon-96x96.0bab47a8c34f.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon-32x32.0d0439be3bfb.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon-16x16.10667142e793.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="https://d3uscstcbhvk7k.cloudfront.net/static/images/favicon-128.a9c0ffbc0278.png" sizes="128x128" />
+
+        <script type="text/javascript">
+            
+        </script>
+        <link rel="stylesheet" href="//cdn2.hubspot.net/hubfs/200838/Backstage_Product_Blog/css/feature-alert.css">
+        
+        
+    <link type="text/css" rel="stylesheet" href="https://d3uscstcbhvk7k.cloudfront.net/static/css/common.bundle.988239b5f8ad.css" />
+    <link type="text/css" rel="stylesheet" href="https://d3uscstcbhvk7k.cloudfront.net/static/css/talent_profiles.bundle.f378ed2e8118.css" />
+
+        <script type='text/javascript'>
+            var maxmind_user_id = "104103";
+            (function() {
+            var loadDeviceJs = function() {
+                var element = document.createElement('script');
+                element.src = ('https:' == document.location.protocol ? 'https:' : 'http:')
+                + '//device.maxmind.com/js/device.js';
+                document.body.appendChild(element);
+            };
+            if (window.addEventListener) {
+                window.addEventListener('load', loadDeviceJs, false);
+            } else if (window.attachEvent) {
+                window.attachEvent('onload', loadDeviceJs);
+            }
+            })();
+        </script>
+        
+        
+
+
+
+<script type="text/javascript">
+    var SEGMENT_IDENTIFY_DEFAULT_INTEGRATIONS = {"Google Analytics": true, "Webhooks": true, "all": false};
+    var SEGMENT_IDENTIFY_LOGIN_INTEGRATIONS = {"all": true};
+    var SEGMENT_IDENTIFY_REQ_PAGE_INTEGRATIONS = {"all": false};
+    var SEGMENT_PAGE_DEFAULT_INTEGRATIONS = {"AdWords": true, "Facebook Pixel": true, "Google Analytics": true, "Optimizely": true, "Parsely": true, "Segment.io": true, "all": false};
+    var SEGMENT_TRACK_DEFAULT_INTEGRATIONS = {"Facebook Pixel": true, "Google Analytics": true, "Webhooks": true, "all": false};
+    var SEGMENT_TRACK_LOGIN_INTEGRATIONS = {"all": true};
+
+    var esi_user_authenticated = false;
+    var esi_user_has_access = false;
+    var esi_eligible_for_profile = false;
+    var esi_eligible_to_create_profile = false;
+    var esi_user_has_castingcalls = false;
+    var esi_nav_thumbnail = "https://d3uscstcbhvk7k.cloudfront.net/static/images/headshot-placeholder.b6f0922c3cfc.png";
+    
+        var esi_profile_view_url = null;
+    
+
+    var esi_targeting_user_state = "anon";
+
+    var esi_messages_unread_count = parseInt("0") || 0;
+    var esi_casting_dashboard_count = parseInt("0") || 0;
+    var esi_acting_dashboard_count = parseInt("0") || 0;
+    var esi_is_employer = false;
+    var esi_is_actor = false;
+
+    var esi_user_email =  null ,
+        esi_user_id =  null ,
+        esi_user_subscriber_state = "anonymous";
+
+    var user_email = esi_user_email; // Backwards compatibility
+
+    var esi_register_url = '/accounts/subscribe/';
+    var esi_login_url = '/accounts/';
+    var esi_logout_url = '/accounts/logout/';
+    var esi_edit_profile_url = '/profile/';
+    var esi_account_settings_url = '/accounts/manage/';
+    var esi_my_applications_url = '/talent_application/';
+    var esi_my_productions_url = '/casting_director/';
+    var esi_post_a_job_url = '/post_a_job/';
+    var esi_cast_your_project_url = '/cast-your-project/';
+    var esi_casting_search_url = '/casting/';
+    var esi_talent_search_url = '/talent/';
+    var esi_news_url = '/news-and-reviews/';
+    var esi_resources_url = '/resources/';
+    var esi_actor101_url = '/actor101/';
+    var esi_talent_dashboard_url = '/talent_dashboard/';
+    var esi_profile_url = '/profile/';
+    var esi_view_or_edit_profile_url = '/profile/';
+    var esi_medialocker_url = '/medialocker/';
+    var esi_messaging_url = '/messaging/';
+    var esi_monologues_url = '/monologues/';
+    var esi_forums_url = '/forums/';
+    var esi_subscribe_url = '/accounts/subscribe/';
+    var esi_renew_url = '/accounts/renew/';
+    var esi_upgrade_url = '/accounts/upgrade/';
+
+    var _EsiUserAnalytics = {
+        user_logged_in: esi_user_authenticated,
+        user_subscriber_state: esi_user_subscriber_state,
+    
+    };
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    var _EsiSegmentUserId = null;
+    var _EsiSegmentTraits = {
+      
+      'User Type': 'unregistered',
+      
+      
+      
+    };
+
+    var _EsiSubscriptionData = "";
+
+    if (!window._kmq) {
+        window._kmq = [];
+    }
+
+    var IOS_App_Installed = false;
+
+    // window-level variable for BounceX
+    window.status = "anonymous";
+
+</script>
+
+
+        <script data-cfasync="false">var ju_num="344784EB-03C1-4F7E-8B21-73F9D1E00FC0";var asset_host='//cdn.justuno.com/';(function() {var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=asset_host+'coupon_code1.js';var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);})();</script>
+
+<script>
+if (typeof(window.ju_options) !== 'object'){
+  window.ju_options = {};
+}
+
+window.ju_options.targeting = window.ju_options.targeting || {};
+window.ju_options.targeting.esi_user_email = (window.esi_user_email === null ? '0' : window.esi_user_email);
+window.ju_options.targeting.esi_user_subscriber_state = (window.esi_user_subscriber_state === null ? '0' : window.esi_user_subscriber_state);
+window.ju_options.targeting.IOS_App_Installed = (window.IOS_App_Installed === null ? '0' : window.IOS_App_Installed);
+
+if (typeof(window._EsiSubscriptionData) === 'object'){
+  for(var propt in window._EsiSubscriptionData){
+    window.ju_options.targeting[propt] = window._EsiSubscriptionData[propt];
+  }
+}
+</script>
+
+
+        
+
+</head>
+
+
+<body class="main">
+    
+
+    
+        <div class="homepage_ad header_ad">
+
+        </div>
+    
+
+    
+<div id="header__container"></div>
+
+
+    
+<div class="loading" style="display:none;">
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+</div>
+<div id="app__container" class="row no-gutters"></div>
+
+
+    <div id="backstage-footer">
+    
+    <div class="container-fluid footer--top font-md-mobile">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    <div class="logo"></div>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li class="title">EXPLORE</li>
+                        <li><a href="/casting/">Casting Calls</a></li>
+                        <li><a href="/talent/">Find Talent</a></li>
+                        <li><a href="/news-and-reviews/">News & Advice</a></li>
+                        <li><a href="/resources/">Resources</a></li>
+                        <li><a href="/actor101/">Actor 101</a></li>
+                        <li><a href="/news/awards-season/">Awards Update</a></li>
+                        <li><a href="/topics/kids/">Backstage Kids</a></li>
+                        <li><a href="http://www.auditionupdate.com/">Audition Update</a></li>
+                        <li><a href="/auditions/">Auditions Calendar</a></li>
+                        <li><a href="http://bbs.backstage.com/">Forums</a></li>
+                        <li><a href="/monologues/">The Monologuer</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li class="title">COMPANY</li>
+                        <li><a href="/about-us/">About Us</a></li>
+                        <li><a href="http://www.backstage.ventures/">The Team</a></li>
+                        <li><a href="https://jobs.lever.co/backstage">Careers</a></li>
+                        <li><a href="/celebrity-testimonials/">Celebrity Testimonials</a></li>
+                        <li><a href="/partners/">Partners</a></li>
+                        <li><a href="http://offers.backstage.com/affiliate-signup">Affiliate Program</a></li>
+                        <li><a href="/mailing-labels/">Mailing Labels</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li class="title">SUPPORT</li>
+                        <li><a href="https://backstage.zendesk.com/hc/en-us">Help</a></li>
+                        <li><a href="https://backstage.zendesk.com/hc/en-us/requests/new">Contact</a></li>
+                        <li><a href="/accounts/subscribe/">Pricing</a></li>
+                        <li><a href="http://offers.backstage.com/advertising-information">Advertising</a></li>
+                        <li><a href="/sitemap/">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li class="title">CONNECT</li>
+                        <li><a href="https://www.facebook.com/backstage">Facebook</a></li>
+                        <li><a href="https://twitter.com/Backstage">Twitter</a></li>
+                        <li><a href="https://www.instagram.com/backstagecast/">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/user/BackStageCasting">YouTube</a></li>
+                        <li><a href="http://hello.backstage.com/emailsignup/">Newsletter</a></li>
+                        <li><a href="/rss-feeds/">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid footer--bottom font-md-mobile">
+        <div class="text--left">&copy; 2018 Backstage. All rights reserved / <a href="/terms-of-service/">Terms of Use</a> / <a href="/privacy-policy/">Privacy Policy</a></div>
+        <div class="text--right"><span class="icon wrench"></span><span class="text">Made in Brooklyn, NY</span><span class="icon heart"></span></div>
+    </div>
+    
+</div>
+
+
+    
+    <script src="https://cdn.ravenjs.com/3.16.0/raven.min.js"></script>
+<script>if (typeof(esi_user_authenticated) !== "undefined"){Raven.config("https://097fe0066f4f4c55abe19a9020d9c70f@sentry.io/143182", {release: "2.5.2", whitelistUrls: ['https://d3uscstcbhvk7k.cloudfront.net/static/']}).install();}</script>
+    
+
+    
+    <script>
+        var CUID = '',
+            messagingMaxFiles = 4,
+            messagingMaxFilesize = 6,
+            secure_site_root = "https://www.backstage.com",
+            profile_id = "30906";
+
+            profile_user_id = "",
+            is_profile_private = false,
+            credits_data = [{"created_datetime": "2017-09-12T17:42:09", "credit_type": "F", "director": "Samuel Adams", "id": 3114048, "location": "", "production_month": null, "production_year": 2017, "profile": 30906, "role": "Model", "sort_order": 0, "title": "Samuel Adams", "updated_datetime": "2017-09-12T17:42:16"}, {"created_datetime": "2017-09-12T17:46:43", "credit_type": "C", "director": "Foot and Mouth Productions", "id": 3114062, "location": "Baltimore, MD", "production_month": null, "production_year": null, "profile": 30906, "role": "Erica", "sort_order": 0, "title": "Bennie's", "updated_datetime": "2017-09-12T17:46:48"}, {"created_datetime": "2017-09-12T17:47:55", "credit_type": "A", "director": "The Folger Theatre", "id": 3114067, "location": "Robert Richmond / Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Timandra / Dancer", "sort_order": 0, "title": "Timon of Athens", "updated_datetime": "2017-09-13T12:59:28"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "C", "director": "Newswatch TV", "id": 2293762, "location": "Fairfax, VA", "production_month": null, "production_year": null, "profile": 30906, "role": "Tech Anchor (recurring)", "sort_order": 1, "title": "Newswatch", "updated_datetime": "2017-09-12T17:46:48"}, {"created_datetime": "2017-09-13T12:58:25", "credit_type": "A", "director": "Eleanor Holdridge / Round House Theatre", "id": 3114811, "location": "Maryland", "production_month": null, "production_year": null, "profile": 30906, "role": "Mary Bennet", "sort_order": 1, "title": "Miss Bennet: Christmas at Pemberley", "updated_datetime": "2017-09-13T12:59:28"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "F", "director": "Mark Kokkoros / Kokkoros Productions", "id": 1022883, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Model", "sort_order": 1, "title": "Stock Video Modeling", "updated_datetime": "2017-09-12T17:42:16"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "F", "director": "", "id": 379136, "location": "NYC", "production_month": null, "production_year": null, "profile": 30906, "role": "Model", "sort_order": 2, "title": "Cavan Images Print Model", "updated_datetime": "2017-09-12T17:42:16"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "C", "director": "Sirens Media", "id": 2293761, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Waitress (prinicpal)", "sort_order": 2, "title": "Crininals at Work", "updated_datetime": "2017-09-12T17:46:48"}, {"created_datetime": "2017-09-13T12:58:53", "credit_type": "A", "director": "Eric Tucker / The Folger Theatre", "id": 3114813, "location": "Washington, D.C.", "production_month": null, "production_year": null, "profile": 30906, "role": "Marianne Dashwood", "sort_order": 2, "title": "Sense and Sensibility", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "2017-09-12T17:47:26", "credit_type": "A", "director": "Alex Levy / 1st Stage Theatre", "id": 3114065, "location": "Virginia", "production_month": null, "production_year": null, "profile": 30906, "role": "Ashley / Morgan Fairchild", "sort_order": 3, "title": "Trevor", "updated_datetime": "2017-09-13T12:59:28"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "C", "director": "Netflix", "id": 1458172, "location": "Baltimore, MD", "production_month": null, "production_year": null, "profile": 30906, "role": "Extra", "sort_order": 3, "title": "House of Cards", "updated_datetime": "2017-09-12T17:46:48"}, {"created_datetime": "2017-09-12T17:43:18", "credit_type": "A", "director": "Virginia Shakespeare Festival / Theatre for Humanity", "id": 3114051, "location": "Williamsburg, VA", "production_month": null, "production_year": null, "profile": 30906, "role": "Imogen", "sort_order": 4, "title": "Cymbeline", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "C", "director": "NBC / Peacock Productions", "id": 379132, "location": "NYC", "production_month": null, "production_year": null, "profile": 30906, "role": "Sarah", "sort_order": 4, "title": "I'd Kill For You (Kelly Lovera Story)", "updated_datetime": "2017-09-12T17:46:48"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Chris Stezin", "id": 2293759, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Suzanne", "sort_order": 5, "title": "PIcasso at the Lapin Agile", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Dominique Serrrand", "id": 2293760, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Marianne US", "sort_order": 6, "title": "Tartuffe", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Lise Bruneau / Taffety Punk Theatre Co.", "id": 1458169, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Miranda / Trinculo", "sort_order": 7, "title": "The Tempest", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Rex Daugherty / Arts On The Horizon", "id": 1458170, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Skip", "sort_order": 8, "title": "Snow Day", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Randy Baker / Rorschach Theatre", "id": 904706, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Vera", "sort_order": 9, "title": "She Kills Monsters", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Lise Bruneau / Taffety Punk Theatre Co.", "id": 904707, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Harriet Westbrook", "sort_order": 10, "title": "Bloody Poetry", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Amber Jackson / WSC Avant Bard", "id": 582999, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Sasha", "sort_order": 11, "title": "Orlando", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "2017-09-12T17:48:33", "credit_type": "A", "director": "Annapolis Shakespeare Co.", "id": 583000, "location": "Annapolis, MD", "production_month": null, "production_year": null, "profile": 30906, "role": "Hermia", "sort_order": 12, "title": "A Midsummer Night's Dream", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Lise Bruneau / Taffety Punk Theatre Co.", "id": 583001, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Chiron", "sort_order": 13, "title": "Titus Andronicus", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Irondale Ensemble", "id": 249505, "location": "NYC", "production_month": null, "production_year": null, "profile": 30906, "role": "Calphurnia", "sort_order": 14, "title": "Julius Caesar", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Irondale Ensemble", "id": 256087, "location": "NYC", "production_month": null, "production_year": null, "profile": 30906, "role": "Ensemble", "sort_order": 15, "title": "Color Between The Lines", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Robert Richmond", "id": 249506, "location": "Manteo, NC", "production_month": null, "production_year": null, "profile": 30906, "role": "Margaret Lawrence, Eleanor Dare u/s", "sort_order": 16, "title": "The Lost Colony", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Steve Pearson / P3 East", "id": 249507, "location": "Columbia, SC", "production_month": null, "production_year": null, "profile": 30906, "role": "Helena", "sort_order": 17, "title": "A Midsummer Night's Dream", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "A", "director": "Waterside Theatre", "id": 249508, "location": "Manteo, NC", "production_month": null, "production_year": null, "profile": 30906, "role": "Cathy", "sort_order": 18, "title": "The Last Five Years", "updated_datetime": "2017-09-13T12:59:29"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "B", "director": "Amber Jackson / WILL Interactive", "id": 1022882, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Janet Martinez", "sort_order": 20, "title": "PAIN", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "B", "director": "Joel David Santner / Yellow Bowtie Prod.", "id": 904709, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Girlfriend (principal)", "sort_order": 21, "title": "Burning My Blues Away", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "B", "director": "Peter Mullin", "id": 379131, "location": "St. Cloud, MN", "production_month": null, "production_year": null, "profile": 30906, "role": "Elizabeth (lead)", "sort_order": 22, "title": "Save Benedict", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "E", "director": "Hack / Stone Productions", "id": 1458173, "location": "Baltimore, MD", "production_month": null, "production_year": null, "profile": 30906, "role": "Lead", "sort_order": 27, "title": "Al Packer FORD (with Joe Flacco)", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "E", "director": "Rock Creek Productions", "id": 904710, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "TSO Hamza (principal)", "sort_order": 28, "title": "Sexual Harrassment Training", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "E", "director": "John Dorsey / SomeNerve Productions", "id": 379135, "location": "Washington, DC", "production_month": null, "production_year": null, "profile": 30906, "role": "Ubergirl (lead)", "sort_order": 29, "title": "Super Accountant", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "E", "director": "Patrick Coker", "id": 379134, "location": "Columbia, SC", "production_month": null, "production_year": null, "profile": 30906, "role": "Spokeswoman", "sort_order": 30, "title": "Colonial Life Commercial", "updated_datetime": "1970-01-01T00:00:00"}, {"created_datetime": "1970-01-01T00:00:00", "credit_type": "E", "director": "ERI Safety Videos", "id": 379133, "location": "Columbia, SC", "production_month": null, "production_year": null, "profile": 30906, "role": "Office Secretary", "sort_order": 31, "title": "Office Safety Training Industrial", "updated_datetime": "1970-01-01T00:00:00"}],
+            education_data = [{"created_datetime": "1970-01-01T00:00:00", "degree": "MFA Acting", "id": 127111, "location": "Columbia, SC", "profile": 30906, "school": "University of South Carolina", "sort_order": 0, "teacher": "Steven Pearson, Robyn Hunt, Robert Richmond, Sarah Barker, Gary Logan, Rob Clare, Erica Tobolski", "updated_datetime": "2017-09-13T12:59:51", "year": ""}],
+            asset_data = [{"additional_text": "", "asset_link": "https://www.youtube.com/watch?v=yv-U1iBH9Z8", "asset_link_thumbnail": "https://i.ytimg.com/vi/yv-U1iBH9Z8/mqdefault.jpg", "caption": "", "created_datetime": "2017-10-10T09:58:48", "file": null, "file_size": null, "file_thumb": null, "file_thumb_url": null, "file_url": null, "has_edited_main": false, "has_edited_square_thumb": false, "height": null, "id": 2146337, "is_primary": true, "name": "Amanda Forstrom Demo Reel", "profile_featured": true, "profile_sort": 4, "status": "A", "transformations": [], "type": "L", "updated_datetime": "2017-10-10T10:00:41", "user": 136548, "visibility": "B", "width": null}, {"additional_text": "", "asset_link": "", "asset_link_thumbnail": null, "caption": "", "created_datetime": "2016-02-13T10:22:01", "file": "uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73.jpg", "file_size": 5022536, "file_thumb": "uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73_thumb.jpg", "file_thumb_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73_thumb.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73.jpg", "has_edited_main": false, "has_edited_square_thumb": false, "height": 5557, "id": 856011, "is_primary": true, "name": "Amanda reretouch-2 (1).jpg", "profile_featured": true, "profile_sort": 1, "status": "A", "transformations": [{"category": "main", "created_datetime": "2016-02-13T10:22:02", "crop_left": 0, "crop_lower": 1200, "crop_right": 800, "crop_upper": 0, "file": "uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73-bWFpbi1uLW4tMC0wLTAtODAwLTEyMDA=.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73-bWFpbi1uLW4tMC0wLTAtODAwLTEyMDA%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 800, "id": 1503174, "is_default_edit": true, "original": 856011, "rotation_degrees": 0, "status": "A", "updated_datetime": "2016-02-13T10:23:18", "width": 533}, {"category": "square_thumb", "created_datetime": "2016-02-13T10:22:03", "crop_left": 0, "crop_lower": 1200, "crop_right": 800, "crop_upper": 0, "file": "uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC04MDAtMTIwMA==.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/casting_call/d897a0f5-d504-4b0d-87ff-9cd7751b8a73-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC04MDAtMTIwMA%3D%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 300, "id": 1503175, "is_default_edit": true, "original": 856011, "rotation_degrees": 0, "status": "A", "updated_datetime": "2016-02-13T10:23:19", "width": 200}], "type": "I", "updated_datetime": "2017-07-19T10:10:34", "user": 136548, "visibility": "B", "width": 3705}, {"additional_text": "", "asset_link": "https://player.vimeo.com/video/106345105", "asset_link_thumbnail": "http://i.vimeocdn.com/video/489432189_640.jpg", "caption": "", "created_datetime": "2016-01-07T12:12:45", "file": null, "file_size": null, "file_thumb": null, "file_thumb_url": null, "file_url": null, "has_edited_main": false, "has_edited_square_thumb": false, "height": null, "id": 788804, "is_primary": false, "name": "BURNING MY BLUES AWAY", "profile_featured": true, "profile_sort": 0, "status": "A", "transformations": [], "type": "L", "updated_datetime": "2016-01-07T12:13:29", "user": 136548, "visibility": "B", "width": null}, {"additional_text": "", "asset_link": "", "asset_link_thumbnail": null, "caption": "", "created_datetime": "2015-07-30T05:58:57", "file": "uploads/searchease/163037/headshot2.jpg", "file_size": 154970, "file_thumb": "uploads/searchease/163037/headshot2_thumb.jpg", "file_thumb_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot2_thumb.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot2.jpg", "has_edited_main": false, "has_edited_square_thumb": false, "height": 498, "id": 24948, "is_primary": false, "name": "Amanda Forstrom", "profile_featured": true, "profile_sort": 0, "status": "A", "transformations": [{"category": "main", "created_datetime": "2015-10-05T17:31:00", "crop_left": 0, "crop_lower": 498, "crop_right": 399, "crop_upper": 0, "file": "uploads/searchease/163037/headshot2-bWFpbi1uLW4tMC0wLTAtMzk5LTQ5OA==.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot2-bWFpbi1uLW4tMC0wLTAtMzk5LTQ5OA%3D%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 498, "id": 1252851, "is_default_edit": true, "original": 24948, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:48:35", "width": 399}, {"category": "square_thumb", "created_datetime": "2015-10-05T17:31:00", "crop_left": 0, "crop_lower": 498, "crop_right": 399, "crop_upper": 0, "file": "uploads/searchease/163037/headshot2-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC0zOTktNDk4.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot2-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC0zOTktNDk4.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 300, "id": 1252852, "is_default_edit": true, "original": 24948, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:49:34", "width": 240}], "type": "I", "updated_datetime": "2017-07-19T10:10:34", "user": 136548, "visibility": "B", "width": 399}, {"additional_text": "", "asset_link": "", "asset_link_thumbnail": null, "caption": "", "created_datetime": "2015-07-30T05:58:57", "file": "uploads/searchease/163037/headshot3.jpg", "file_size": 232032, "file_thumb": "uploads/searchease/163037/headshot3_thumb.jpg", "file_thumb_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot3_thumb.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot3.jpg", "has_edited_main": false, "has_edited_square_thumb": false, "height": 804, "id": 24949, "is_primary": false, "name": "Amanda Forstrom", "profile_featured": true, "profile_sort": 0, "status": "A", "transformations": [{"category": "main", "created_datetime": "2015-10-05T17:31:00", "crop_left": 0, "crop_lower": 804, "crop_right": 534, "crop_upper": 0, "file": "uploads/searchease/163037/headshot3-bWFpbi1uLW4tMC0wLTAtNTM0LTgwNA==.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot3-bWFpbi1uLW4tMC0wLTAtNTM0LTgwNA%3D%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 800, "id": 1252845, "is_default_edit": true, "original": 24949, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:48:49", "width": 531}, {"category": "square_thumb", "created_datetime": "2015-10-05T17:31:00", "crop_left": 0, "crop_lower": 804, "crop_right": 534, "crop_upper": 0, "file": "uploads/searchease/163037/headshot3-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC01MzQtODA0.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot3-c3F1YXJlX3RodW1iLW4tbi0wLTAtMC01MzQtODA0.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 300, "id": 1252846, "is_default_edit": true, "original": 24949, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:48:33", "width": 199}], "type": "I", "updated_datetime": "2015-10-05T17:31:00", "user": 136548, "visibility": "B", "width": 534}, {"additional_text": "", "asset_link": "", "asset_link_thumbnail": null, "caption": "", "created_datetime": "2015-07-30T05:58:57", "file": "uploads/searchease/163037/headshot4.jpg", "file_size": 163113, "file_thumb": "uploads/searchease/163037/headshot4_thumb.jpg", "file_thumb_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot4_thumb.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot4.jpg", "has_edited_main": false, "has_edited_square_thumb": false, "height": 463, "id": 24950, "is_primary": false, "name": "Amanda Forstrom", "profile_featured": true, "profile_sort": 0, "status": "A", "transformations": [{"category": "main", "created_datetime": "2015-10-05T17:31:00", "crop_left": 0, "crop_lower": 463, "crop_right": 579, "crop_upper": 0, "file": "uploads/searchease/163037/headshot4-bWFpbi1uLW4tMC0wLTAtNTc5LTQ2Mw==.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot4-bWFpbi1uLW4tMC0wLTAtNTc5LTQ2Mw%3D%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 463, "id": 1252855, "is_default_edit": true, "original": 24950, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:48:49", "width": 579}, {"category": "square_thumb", "created_datetime": "2015-10-05T17:31:00", "crop_left": 58, "crop_lower": 463, "crop_right": 521, "crop_upper": 0, "file": "uploads/searchease/163037/headshot4-c3F1YXJlX3RodW1iLW4tbi0wLTU4LTAtNTIxLTQ2Mw==.jpg", "file_url": "https://d26oc3sg82pgk3.cloudfront.net/files/media/uploads/searchease/163037/headshot4-c3F1YXJlX3RodW1iLW4tbi0wLTU4LTAtNTIxLTQ2Mw%3D%3D.jpg", "flipped_horizontal": false, "flipped_vertical": false, "height": 300, "id": 1252856, "is_default_edit": true, "original": 24950, "rotation_degrees": 0, "status": "A", "updated_datetime": "2015-10-06T00:48:35", "width": 300}], "type": "I", "updated_datetime": "2015-10-05T17:31:00", "user": 136548, "visibility": "B", "width": 579}],
+            links_data = [{"created_datetime": "2017-09-12T17:41:12", "id": 264955, "link": "http://www.amandaforstrom.net", "profile": 30906, "sort_order": 0, "title": "Amanda's Website", "updated_datetime": "2017-09-12T17:41:12"}],
+            representatives_data = [],
+            skills_data = [{"id": 2, "name": "Music/Musician", "parent": null, "proficiency": null}, {"id": 3, "name": "Accents/Dialects", "parent": null, "proficiency": null}, {"id": 10, "name": "Fight Training", "parent": null, "proficiency": null}, {"id": 20, "name": "Horseback Riding", "parent": null, "proficiency": null}, {"id": 33, "name": "Improvisation", "parent": "Acting Techniques", "proficiency": null}, {"id": 37, "name": "Firearms Training", "parent": "Weapons Training", "proficiency": null}, {"id": 39, "name": "Ballet", "parent": "Dance", "proficiency": null}, {"id": 50, "name": "Shakespeare Training", "parent": "Acting Techniques", "proficiency": null}, {"id": 72, "name": "Clown Training", "parent": "Variety", "proficiency": null}, {"id": 123, "name": "Acrobatics", "parent": "Sports/Fitness", "proficiency": null}, {"id": 260, "name": "Sight Reading", "parent": "Music/Musician", "proficiency": null}, {"id": 294, "name": "Athletic", "parent": "Sports/Fitness", "proficiency": null}, {"id": 375, "name": "Foreign Language", "parent": null, "proficiency": null}, {"id": 376, "name": "Singer", "parent": null, "proficiency": null}, {"id": 418, "name": "Lyrical", "parent": null, "proficiency": null}, {"id": 419, "name": "Jazz", "parent": null, "proficiency": null}, {"id": 420, "name": "Tap", "parent": null, "proficiency": null}, {"id": 2045, "name": "Pointe", "parent": null, "proficiency": null}, {"id": 3881, "name": "Basic Ballroom", "parent": null, "proficiency": null}],
+            highlights_data = [{"created_datetime": "1970-01-01T00:00:00", "display_datetime": "1970-01-01T00:00:00", "id": 30876, "profile": 30906, "should_display_date": false, "sort_order": 0, "text": "Amanda Forstrom is a transformational and risk-taking actress with experience in theatre, film and TV.  Height: 5'5''  Weight:  118 lbs.  Eyes: Green  Hair: Auburn\nMeasurements:  32B - 25 - 33    Dress/Pant Size: 2    Shirt:  Small", "updated_datetime": "1970-01-01T00:00:00"}],
+            body_type_choices = [{"key": "N", "value": "Average"}, {"key": "S", "value": "Slim"}, {"key": "A", "value": "Athletic / Toned"}, {"key": "M", "value": "Muscular"}, {"key": "C", "value": "Curvy"}, {"key": "H", "value": "Heavyset / Stocky"}, {"key": "O", "value": "Plus-Sized / Full-Figured"}],
+            gender_choices = [{"key": "B", "value": "Unspecified"}, {"key": "M", "value": "Male"}, {"key": "F", "value": "Female"}],
+            hair_color_choices = [{"key": "A", "value": "Black"}, {"key": "B", "value": "Brown"}, {"key": "C", "value": "Blond"}, {"key": "D", "value": "Auburn"}, {"key": "E", "value": "Chestnut"}, {"key": "F", "value": "Red"}, {"key": "G", "value": "Gray"}, {"key": "H", "value": "White"}, {"key": "I", "value": "Bald"}, {"key": "J", "value": "Salt \u0026 Pepper"}, {"key": "K", "value": "Strawberry Blond"}, {"key": "L", "value": "Multicolored/Dyed"}],
+            eye_color_choices = [{"key": "A", "value": "Amber"}, {"key": "B", "value": "Blue"}, {"key": "C", "value": "Brown"}, {"key": "D", "value": "Gray"}, {"key": "E", "value": "Green"}, {"key": "F", "value": "Hazel"}, {"key": "G", "value": "Red"}, {"key": "H", "value": "Violet"}],
+            ethnicity_choices = [{"key": 2, "value": "Caucasian"}, {"key": 3, "value": "African American"}, {"key": 4, "value": "Latino/Hispanic"}, {"key": 5, "value": "Asian"}, {"key": 6, "value": "South Asian"}, {"key": 7, "value": "Native American"}, {"key": 8, "value": "Middle Eastern"}, {"key": 9, "value": "Southeast Asian / Pacific Islander"}, {"key": 10, "value": "Ethnically Ambiguous / Mixed Race"}, {"key": 11, "value": "African Descent"}],
+            union_choices = [{"key": 6, "value": "SAG-AFTRA"}, {"key": 5, "value": "Equity (U.S.)"}, {"key": 8, "value": "Equity (U.K.)"}, {"key": 1, "value": "ACTRA"}, {"key": 2, "value": "AFM"}, {"key": 3, "value": "AGMA"}, {"key": 4, "value": "AGVA"}, {"key": 7, "value": "BECTU"}],
+            production_type_choices = [{"children": [{"id": 71, "name": "Feature Films", "parent": 54}, {"id": 72, "name": "Short Films", "parent": 54}, {"id": 73, "name": "Student Films", "parent": 54}], "id": 54, "name": "Film"}, {"children": [{"id": 60, "name": "Plays", "parent": 55}, {"id": 69, "name": "Musicals", "parent": 55}, {"id": 70, "name": "Chorus Calls", "parent": 55}], "id": 55, "name": "Theater"}, {"children": [{"id": 107, "name": "Scripted TV \u0026 Video", "parent": 56}, {"id": 75, "name": "Reality TV \u0026 Documentary", "parent": 56}, {"id": 76, "name": "Music Videos", "parent": 56}, {"id": 77, "name": "Demo \u0026 Instructional Videos", "parent": 56}, {"id": 78, "name": "Multimedia", "parent": 56}], "id": 56, "name": "TV \u0026 Video"}, {"children": [{"id": 79, "name": "National Commercials", "parent": 59}, {"id": 80, "name": "Local Commercials", "parent": 59}, {"id": 81, "name": "Spec Commercials", "parent": 59}, {"id": 82, "name": "Online Commercials \u0026 Promos", "parent": 59}], "id": 59, "name": "Commercials"}, {"children": [{"id": 83, "name": "Print Modeling", "parent": 57}, {"id": 84, "name": "Fashion \u0026 Runway Modeling", "parent": 57}, {"id": 85, "name": "Commercial \u0026 Fit Modeling", "parent": 57}, {"id": 86, "name": "Promotional \u0026 Event Modeling", "parent": 57}], "id": 57, "name": "Modeling"}, {"children": [{"id": 87, "name": "Dancers \u0026 Choreographers", "parent": 58}, {"id": 88, "name": "Cabaret \u0026 Variety", "parent": 58}, {"id": 89, "name": "Singers", "parent": 58}, {"id": 90, "name": "Musicians \u0026 Composers", "parent": 58}, {"id": 91, "name": "Comedians \u0026 Improv", "parent": 58}, {"id": 92, "name": "Theme Parks", "parent": 58}, {"id": 93, "name": "Cruise Lines", "parent": 58}], "id": 58, "name": "Performing Arts"}, {"children": [{"id": 94, "name": "Commercial \u0026 Film Voiceover", "parent": 63}, {"id": 95, "name": "Animation \u0026 Videogame Voiceover", "parent": 63}, {"id": 96, "name": "Audio Books", "parent": 63}, {"id": 97, "name": "Radio \u0026 Podcasts", "parent": 63}], "id": 63, "name": "Voiceover"}, {"children": [{"id": 98, "name": "Stage Staff \u0026 Tech", "parent": 61}, {"id": 99, "name": "Film \u0026 TV Crew", "parent": 61}, {"id": 100, "name": "Writers", "parent": 61}, {"id": 101, "name": "Gigs", "parent": 61}], "id": 61, "name": "Entertainment Jobs \u0026 Crew"}, {"children": [{"id": 102, "name": "Agents \u0026 Managers", "parent": 62}, {"id": 103, "name": "Workshops", "parent": 62}, {"id": 104, "name": "Competitions", "parent": 62}, {"id": 105, "name": "Festivals \u0026 Events", "parent": 62}, {"id": 108, "name": "Groups \u0026 Membership Companies", "parent": 62}], "id": 62, "name": "Events \u0026 Representation"}],
+            credit_type_choices = [{"key": "A", "value": "Theater"}, {"key": "B", "value": "Film"}, {"key": "C", "value": "Television"}, {"key": "D", "value": "Video"}, {"key": "E", "value": "Commercials \u0026 Industrials"}, {"key": "F", "value": "Modeling"}, {"key": "G", "value": "Dance"}, {"key": "H", "value": "Music \u0026 Singing"}, {"key": "I", "value": "Comedy \u0026 Improv"}, {"key": "J", "value": "Voiceover"}, {"key": "K", "value": "Performing Arts"}, {"key": "L", "value": "Online \u0026 Multimedia"}],
+            state_choices = [["U.S.", [["AL", "Alabama"], ["AK", "Alaska"], ["AS", "American Samoa"], ["AZ", "Arizona"], ["AR", "Arkansas"], ["AA", "Armed Forces Americas"], ["AE", "Armed Forces Europe"], ["AP", "Armed Forces Pacific"], ["CA", "California"], ["CO", "Colorado"], ["CT", "Connecticut"], ["DE", "Delaware"], ["DC", "District of Columbia"], ["FL", "Florida"], ["GA", "Georgia"], ["GU", "Guam"], ["HI", "Hawaii"], ["ID", "Idaho"], ["IL", "Illinois"], ["IN", "Indiana"], ["IA", "Iowa"], ["KS", "Kansas"], ["KY", "Kentucky"], ["LA", "Louisiana"], ["ME", "Maine"], ["MD", "Maryland"], ["MA", "Massachusetts"], ["MI", "Michigan"], ["MN", "Minnesota"], ["MS", "Mississippi"], ["MO", "Missouri"], ["MT", "Montana"], ["NE", "Nebraska"], ["NV", "Nevada"], ["NH", "New Hampshire"], ["NJ", "New Jersey"], ["NM", "New Mexico"], ["NY", "New York"], ["NC", "North Carolina"], ["ND", "North Dakota"], ["MP", "Northern Mariana Islands"], ["OH", "Ohio"], ["OK", "Oklahoma"], ["OR", "Oregon"], ["PA", "Pennsylvania"], ["PR", "Puerto Rico"], ["RI", "Rhode Island"], ["SC", "South Carolina"], ["SD", "South Dakota"], ["TN", "Tennessee"], ["TX", "Texas"], ["UT", "Utah"], ["VT", "Vermont"], ["VI", "Virgin Islands"], ["VA", "Virginia"], ["WA", "Washington"], ["WV", "West Virginia"], ["WI", "Wisconsin"], ["WY", "Wyoming"]]], ["Canada", [["AB", "Alberta"], ["BC", "British Columbia"], ["MB", "Manitoba"], ["NB", "New Brunswick"], ["NL", "Newfoundland and Labrador"], ["NS", "Nova Scotia"], ["NT", "Northwest Territories"], ["NU", "Nunavut"], ["ON", "Ontario"], ["PE", "Prince Edward Island"], ["QC", "Quebec"], ["SK", "Saskatchewan"], ["YT", "Yukon"]]]],
+            country_choices = [{"key": 235, "value": "United States"}, {"key": 40, "value": "Canada"}, {"key": 1, "value": "Afghanistan"}, {"key": 2, "value": "Aland Islands"}, {"key": 3, "value": "Albania"}, {"key": 4, "value": "Algeria"}, {"key": 5, "value": "American Samoa"}, {"key": 6, "value": "Andorra"}, {"key": 7, "value": "Angola"}, {"key": 8, "value": "Anguilla"}, {"key": 9, "value": "Antarctica"}, {"key": 10, "value": "Antigua and Barbuda"}, {"key": 11, "value": "Argentina"}, {"key": 12, "value": "Armenia"}, {"key": 13, "value": "Aruba"}, {"key": 14, "value": "Australia"}, {"key": 15, "value": "Austria"}, {"key": 16, "value": "Azerbaijan"}, {"key": 17, "value": "Bahamas"}, {"key": 18, "value": "Bahrain"}, {"key": 19, "value": "Bangladesh"}, {"key": 20, "value": "Barbados"}, {"key": 21, "value": "Belarus"}, {"key": 22, "value": "Belgium"}, {"key": 23, "value": "Belize"}, {"key": 24, "value": "Benin"}, {"key": 25, "value": "Bermuda"}, {"key": 26, "value": "Bhutan"}, {"key": 27, "value": "Bolivia"}, {"key": 28, "value": "Bonaire, Saint Eustatius and Saba"}, {"key": 29, "value": "Bosnia and Herzegovina"}, {"key": 30, "value": "Botswana"}, {"key": 31, "value": "Bouvet Island"}, {"key": 32, "value": "Brazil"}, {"key": 33, "value": "British Indian Ocean Territory"}, {"key": 34, "value": "Brunei Darussalam"}, {"key": 35, "value": "Bulgaria"}, {"key": 36, "value": "Burkina Faso"}, {"key": 37, "value": "Burundi"}, {"key": 38, "value": "Cambodia"}, {"key": 39, "value": "Cameroon"}, {"key": 41, "value": "Cape Verde"}, {"key": 42, "value": "Cayman Islands"}, {"key": 43, "value": "Central African Republic"}, {"key": 44, "value": "Chad"}, {"key": 45, "value": "Chile"}, {"key": 46, "value": "China"}, {"key": 47, "value": "Christmas Island"}, {"key": 48, "value": "Cocos (Keeling) Islands"}, {"key": 49, "value": "Colombia"}, {"key": 50, "value": "Comoros"}, {"key": 51, "value": "Congo"}, {"key": 52, "value": "Congo, the Democratic Republic of the"}, {"key": 53, "value": "Cook Islands"}, {"key": 54, "value": "Costa Rica"}, {"key": 55, "value": "Cote d'Ivoire"}, {"key": 56, "value": "Croatia"}, {"key": 57, "value": "Cuba"}, {"key": 58, "value": "Cura\u00c3\u00a7ao (Cura\u00e7ao)"}, {"key": 59, "value": "Cyprus"}, {"key": 60, "value": "Czech Republic"}, {"key": 61, "value": "Denmark"}, {"key": 62, "value": "Djibouti"}, {"key": 63, "value": "Dominica"}, {"key": 64, "value": "Dominican Republic"}, {"key": 65, "value": "Ecuador"}, {"key": 66, "value": "Egypt"}, {"key": 67, "value": "El Salvador"}, {"key": 68, "value": "Equatorial Guinea"}, {"key": 69, "value": "Eritrea"}, {"key": 70, "value": "Estonia"}, {"key": 71, "value": "Ethiopia"}, {"key": 72, "value": "Falkland Islands (Malvinas)"}, {"key": 73, "value": "Faroe Islands"}, {"key": 74, "value": "Fiji"}, {"key": 75, "value": "Finland"}, {"key": 76, "value": "France"}, {"key": 77, "value": "French Guiana"}, {"key": 78, "value": "French Polynesia"}, {"key": 79, "value": "French Southern Territories"}, {"key": 80, "value": "Gabon"}, {"key": 81, "value": "Gambia"}, {"key": 82, "value": "Georgia"}, {"key": 83, "value": "Germany"}, {"key": 84, "value": "Ghana"}, {"key": 85, "value": "Gibraltar"}, {"key": 86, "value": "Greece"}, {"key": 87, "value": "Greenland"}, {"key": 88, "value": "Grenada"}, {"key": 89, "value": "Guadeloupe"}, {"key": 90, "value": "Guam"}, {"key": 91, "value": "Guatemala"}, {"key": 92, "value": "Guernsey"}, {"key": 93, "value": "Guinea"}, {"key": 94, "value": "Guinea-Bissau"}, {"key": 95, "value": "Guyana"}, {"key": 96, "value": "Haiti"}, {"key": 97, "value": "Heard and McDonald Islands"}, {"key": 98, "value": "Holy See (Vatican City State)"}, {"key": 99, "value": "Honduras"}, {"key": 100, "value": "Hong Kong"}, {"key": 101, "value": "Hungary"}, {"key": 102, "value": "Iceland"}, {"key": 103, "value": "India"}, {"key": 104, "value": "Indonesia"}, {"key": 105, "value": "Iran, Islamic Republic of"}, {"key": 106, "value": "Iraq"}, {"key": 107, "value": "Ireland"}, {"key": 108, "value": "Isle of Man"}, {"key": 109, "value": "Israel"}, {"key": 110, "value": "Italy"}, {"key": 111, "value": "Jamaica"}, {"key": 112, "value": "Japan"}, {"key": 113, "value": "Jersey"}, {"key": 114, "value": "Jordan"}, {"key": 115, "value": "Kazakhstan"}, {"key": 116, "value": "Kenya"}, {"key": 117, "value": "Kiribati"}, {"key": 118, "value": "Korea, Democratic People's Republic of"}, {"key": 119, "value": "Korea, Republic of"}, {"key": 120, "value": "Kuwait"}, {"key": 121, "value": "Kyrgyzstan"}, {"key": 122, "value": "Lao People's Democratic Republic"}, {"key": 123, "value": "Latvia"}, {"key": 124, "value": "Lebanon"}, {"key": 125, "value": "Lesotho"}, {"key": 126, "value": "Liberia"}, {"key": 127, "value": "Libyan Arab Jamahiriya"}, {"key": 128, "value": "Liechtenstein"}, {"key": 129, "value": "Lithuania"}, {"key": 130, "value": "Luxembourg"}, {"key": 131, "value": "Macao"}, {"key": 132, "value": "Macedonia, the former Yugoslav Republic of"}, {"key": 133, "value": "Madagascar"}, {"key": 134, "value": "Malawi"}, {"key": 135, "value": "Malaysia"}, {"key": 136, "value": "Maldives"}, {"key": 137, "value": "Mali"}, {"key": 138, "value": "Malta"}, {"key": 139, "value": "Marshall Islands"}, {"key": 140, "value": "Martinique"}, {"key": 141, "value": "Mauritania"}, {"key": 142, "value": "Mauritius"}, {"key": 143, "value": "Mayotte"}, {"key": 144, "value": "Mexico"}, {"key": 145, "value": "Micronesia, Federated States of"}, {"key": 146, "value": "Moldova, Republic of"}, {"key": 147, "value": "Monaco"}, {"key": 148, "value": "Mongolia"}, {"key": 149, "value": "Montenegro"}, {"key": 150, "value": "Montserrat"}, {"key": 151, "value": "Morocco"}, {"key": 152, "value": "Mozambique"}, {"key": 153, "value": "Myanmar"}, {"key": 154, "value": "Namibia"}, {"key": 155, "value": "Nauru"}, {"key": 156, "value": "Nepal"}, {"key": 157, "value": "Netherlands"}, {"key": 158, "value": "New Caledonia"}, {"key": 159, "value": "New Zealand"}, {"key": 160, "value": "Nicaragua"}, {"key": 161, "value": "Niger"}, {"key": 162, "value": "Nigeria"}, {"key": 163, "value": "Niue"}, {"key": 164, "value": "Norfolk Island"}, {"key": 165, "value": "Northern Mariana Islands"}, {"key": 166, "value": "Norway"}, {"key": 167, "value": "Oman"}, {"key": 168, "value": "Pakistan"}, {"key": 169, "value": "Palau"}, {"key": 170, "value": "Palestinian Territory, Occupied"}, {"key": 171, "value": "Panama"}, {"key": 172, "value": "Papua New Guinea"}, {"key": 173, "value": "Paraguay"}, {"key": 174, "value": "Peru"}, {"key": 175, "value": "Philippines"}, {"key": 176, "value": "Pitcairn"}, {"key": 177, "value": "Poland"}, {"key": 178, "value": "Portugal"}, {"key": 179, "value": "Puerto Rico"}, {"key": 180, "value": "Qatar"}, {"key": 181, "value": "Reunion"}, {"key": 182, "value": "Romania"}, {"key": 183, "value": "Russian Federation"}, {"key": 184, "value": "Rwanda"}, {"key": 185, "value": "Saint Barthelemy"}, {"key": 186, "value": "Saint Helena"}, {"key": 187, "value": "Saint Kitts and Nevis"}, {"key": 188, "value": "Saint Lucia"}, {"key": 189, "value": "Saint Martin (French part)"}, {"key": 190, "value": "Saint Pierre and Miquelon"}, {"key": 191, "value": "Saint Vincent and the Grenadines"}, {"key": 192, "value": "Samoa"}, {"key": 193, "value": "San Marino"}, {"key": 194, "value": "Sao Tome and Principe"}, {"key": 195, "value": "Saudi Arabia"}, {"key": 196, "value": "Senegal"}, {"key": 197, "value": "Serbia"}, {"key": 198, "value": "Seychelles"}, {"key": 199, "value": "Sierra Leone"}, {"key": 200, "value": "Singapore"}, {"key": 201, "value": "Sint Maarten"}, {"key": 202, "value": "Slovakia"}, {"key": 203, "value": "Slovenia"}, {"key": 204, "value": "Solomon Islands"}, {"key": 205, "value": "Somalia"}, {"key": 206, "value": "South Africa"}, {"key": 207, "value": "South Georgia and the South Sandwich Islands"}, {"key": 208, "value": "Spain"}, {"key": 209, "value": "Sri Lanka"}, {"key": 210, "value": "Sudan"}, {"key": 211, "value": "Suriname"}, {"key": 212, "value": "Svalbard and Jan Mayen"}, {"key": 213, "value": "Swaziland"}, {"key": 214, "value": "Sweden"}, {"key": 215, "value": "Switzerland"}, {"key": 216, "value": "Syrian Arab Republic"}, {"key": 217, "value": "Taiwan"}, {"key": 218, "value": "Tajikistan"}, {"key": 219, "value": "Tanzania, United Republic of"}, {"key": 220, "value": "Thailand"}, {"key": 221, "value": "Timor-Leste"}, {"key": 222, "value": "Togo"}, {"key": 223, "value": "Tokelau"}, {"key": 224, "value": "Tonga"}, {"key": 225, "value": "Trinidad and Tobago"}, {"key": 226, "value": "Tunisia"}, {"key": 227, "value": "Turkey"}, {"key": 228, "value": "Turkmenistan"}, {"key": 229, "value": "Turks and Caicos Islands"}, {"key": 230, "value": "Tuvalu"}, {"key": 231, "value": "Uganda"}, {"key": 232, "value": "Ukraine"}, {"key": 233, "value": "United Arab Emirates"}, {"key": 234, "value": "United Kingdom"}, {"key": 236, "value": "United States Minor Outlying Islands"}, {"key": 237, "value": "Uruguay"}, {"key": 238, "value": "Uzbekistan"}, {"key": 239, "value": "Vanuatu"}, {"key": 240, "value": "Venezuela"}, {"key": 241, "value": "Viet Nam"}, {"key": 242, "value": "Virgin Islands, British"}, {"key": 243, "value": "Virgin Islands, U.S."}, {"key": 244, "value": "Wallis and Futuna"}, {"key": 245, "value": "Western Sahara"}, {"key": 246, "value": "Yemen"}, {"key": 247, "value": "Zambia"}, {"key": 248, "value": "Zimbabwe"}, {"key": 249, "value": "South Sudan"}],
+            saved_tag_id = "0",
+            login_url = "/accounts/?next=/u/AmandaForstrom/";
+            my_full_name = ""; // This is the current user's name, NOT the profile user's name.
+            compliance_status = "";
+    </script>
+
+    
+
+    
+    <script src="https://d3uscstcbhvk7k.cloudfront.net/static/js/common.bundle.3c20788b73df.js" charset="utf-8"></script>
+    <script src="https://d3uscstcbhvk7k.cloudfront.net/static/js/talent_profiles.bundle.26d9942e9389.js"charset="utf-8"></script>
+    
+
+    
+
+
+    
+        <script type="text/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId : '111374926453', // App ID
+                status : true, // check login status
+                cookie : true, // enable cookies to allow the server to access the session
+                xfbml : true // parse XFBML
+                });
+            };
+
+            (function(d){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+        </script>
+    
+
+    <!--*******************************************-->
+<!--********** START ANALYTICS BLOCK **********-->
+<!--*******************************************-->
+
+<!-- Parse.ly block (put before tracker code is included)-->
+<script type="text/javascript">
+var parselyPreload = {eventQueue: [], loaded: false};
+
+function parselyTrackPageView(event) {
+    if (parselyPreload.loaded) {
+        PARSELY.beacon.trackPageView(event);
+    } else {
+        parselyPreload.eventQueue.push(event);
+    }
+}
+
+PARSELY = {
+    onload: function() {
+        parselyPreload.loaded = true;
+        for (var i = 0; i < parselyPreload.eventQueue.length; i++) {
+            PARSELY.beacon.trackPageView(parselyPreload.eventQueue[i]);
+        }
+    }
+};
+</script>
+<!-- End Parse.ly block -->
+
+ <!-- Start Segment block -->
+<script type="text/javascript">
+    !function(){var analytics=window.analytics=window.analytics||[];if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.0";
+      analytics.load('qnwu3ox0id');
+
+      analytics.on('page', function() {
+        var isApplyPaywall = (window.location.pathname.indexOf('/login/apply') >= 0);
+        var isSubscribe = (window.location.pathname.indexOf('/subscribe') >= 0);
+        var isHello = (window.location.hostname === 'hello.backstage.com');
+        if (isApplyPaywall || isSubscribe || isHello) {
+             analytics.track('ViewContent', {}, { integrations: { 'All': false, 'Facebook Pixel': true, 'Webhooks': true } });
+       }
+      });
+
+      if (_EsiSegmentUserId != null){
+          analytics.identify(_EsiSegmentUserId, _EsiSegmentTraits, {integrations: window.SEGMENT_IDENTIFY_DEFAULT_INTEGRATIONS});
+      }
+
+      analytics.page({url: window.location.href,
+          
+          
+          
+      }, {integrations: window.SEGMENT_PAGE_DEFAULT_INTEGRATIONS});
+
+    }}();
+
+    function trackOutboundLink(link, category, action) {
+        try {
+            analytics.track(action, {category: category}, {integrations: window.SEGMENT_TRACK_DEFAULT_INTEGRATIONS});
+        }
+        catch(err){
+            alert(err)
+        }
+
+        setTimeout(function() {
+            document.location.href = link.href;
+        }, 100);
+    }
+</script>
+
+<script type="text/javascript">
+    analytics.ready(function() {
+        if (_EsiSegmentUserId == null) {
+            if (analytics.user().id()) {
+                <!-- User has logged out; reset segment to clear traits and IDs -->
+                analytics.reset();
+            }
+        } else {
+            <!-- Identify for integrations that require a page call -->
+            analytics.identify(_EsiSegmentUserId, _EsiSegmentTraits, {integrations: window.SEGMENT_IDENTIFY_REQ_PAGE_INTEGRATIONS});
+        }
+    });
+</script>
+<!-- End Segment block -->
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WBMS2S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WBMS2S');</script>
+<!-- End Google Tag Manager -->
+
+<script type="text/javascript">
+    _kmq = _kmq || [];
+    if (window._EsiUserAnalytics) {
+        _kmq.push(['identify', window._EsiUserAnalytics.user_email]);
+        _kmq.push(['set', window._EsiUserAnalytics]);
+    } else {
+        _kmq.push(['set', window._EsiUserAnalytics]);
+    }
+</script>
+
+
+<script type="text/javascript">
+    if(!window.esi_user_authenticated) {
+      // nothing here after removing adroll, keeping this around
+      // in case we want it later.
+    }
+</script>
+
+
+<!--*******************************************-->
+<!--************ END ANALYTICS BLOCK **********-->
+<!--*******************************************-->
+
+
+    </body>
+</html>
