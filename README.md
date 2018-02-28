@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # JuniorEx
 
 Dan Aronson's Junior Developer home task
@@ -69,4 +67,4 @@ Within "question_2" directory you will be able to find:
 1. test_profileExtractorBackstage - a test case to test all of the profileExtractorBackstage object functionalities
 2. test_profileExtractorLinkedIn - a test case to test all of the profileExtractorBackstage object functionalities
 3. test_profileExtractorIndeed - a test case to test all of the profileExtractorBackstage object functionalities
->>>>>>> 7669f5040ae5ee751e0bd40e01d255469afff104
+
