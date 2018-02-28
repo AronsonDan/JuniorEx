@@ -21,6 +21,11 @@ In order to meet the requested requirements, i decided to implement a hierarchic
 The solution is a generic and can represent any kind of hierarchical tree by defining new objects and assigning its data with minor neccessary code changes
 In our case the tree will represent a company structure with hirarchy relationships between employees.
 
+#### בהנחה שפעולה 4 נקראת הרבה, איך זה ישפיע על מבנה הנתונים?
+
+The tree data structure makes it relatively easy to perform search operations.
+For future improbvements especialy in case of production, i would consider caching the method results in order to enhance performance.
+
 #### Solution objects:
   - Employee - An objects that holds all of the required employee data.
   - Node - An object that represents a node within the company tree and holds the following attributes:
@@ -42,8 +47,6 @@ The solution was tested using the build in unittest library
 Within "question_1" directory you will be able to find:
 1. test_node - a test case to test all of the Node object functionalities
 2. test_heirarchical_tree - a test case to test all of the HeirarchicalTree object functionalities
-
-#### בהנחה שפעולה 4 נקראת הרבה, איך זה ישפיע על מבנה הנתונים?
 
 
 ### Question 2
