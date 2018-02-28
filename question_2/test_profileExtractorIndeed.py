@@ -24,28 +24,39 @@ class TestProfileExtractorIndeed(TestCase):
 
     def test_set_education(self):
         self.assertEqual(self.indeed_profile_html_ok_1.get_education(), [
-            {'major': 'MSc in International Economics',
-             'institution_name': 'London Metropolitan Business School, London Metropolitan University - London',
-             'years': 'September 2011 to October 2012'},
-            {'major': 'MSc in International Finance and Financial Engineering',
-             'institution_name': 'Westminster Business School, University of - Westminster',
-             'years': 'September 2009 to July 2011'},
-            {'major': 'BA in International Business',
-             'institution_name': 'London Metropolitan Business School, London Metropolitan University - London',
-             'years': 'September 2006 to June 2009'},
-            {'major': 'PhD in Economics', 'institution_name': 'City University - London', 'years': None}
+            {'years': 'September 2011 to October 2012', 'major': 'MSc in International Economics'},
+            {'years': 'September 2009 to July 2011', 'major': 'MSc in International Finance and Financial Engineering'},
+            {'years': 'September 2006 to June 2009', 'major': 'BA in International Business'},
+            {'years': None, 'major': 'PhD in Economics'}
         ])
         self.assertEqual(self.indeed_profile_html_ok_2.get_education(), [
-            {'years': 'January 1983 to January 1988', 'major': 'Bachelor of Science in Civil Engineering',
-             'institution_name': 'University of Nueva Caceres'}
+            {'major': 'Bachelor of Science in Civil Engineering', 'years': 'January 1983 to January 1988'}
         ]
                          )
         self.assertEqual(self.indeed_profile_html_ok_3.get_education(), [
-            {'institution_name': 'Skidmore College', 'major': 'B.A. in Psychology & Sociology', 'years': None},
-            {'institution_name': 'Baruch College', 'major': 'Industrial Organizational Psychology', 'years': None}
+            {'years': None, 'major': 'B.A. in Psychology & Sociology'},
+            {'years': None, 'major': 'Industrial Organizational Psychology'}
         ])
 
     def test_set_skills(self):
-        self.assertEqual(self.indeed_profile_html_ok_1.get_skills(), [])
-        self.assertEqual(self.indeed_profile_html_ok_2.get_skills(), [])
-        self.assertEqual(self.indeed_profile_html_ok_3.get_skills(), [])
+        self.assertEqual(self.indeed_profile_html_ok_1.get_skills(), [
+            'Teaching: Class management',
+            'Motivating pupils',
+            'Marking coursework',
+            'Subject matter knowledge',
+            'Organising activities etc.'
+        ])
+        self.assertEqual(self.indeed_profile_html_ok_2.get_skills(),
+                         ['Professional Driver', 'DrProfessional Driver', 'Drafting and Computer Literate (MS Word',
+                          'Excel', 'Powerpoint', 'Pagemaker and Adobe Corel Draw)'])
+        self.assertEqual(self.indeed_profile_html_ok_3.get_skills(), [
+            'Strategic Operational Planning & Leadership',
+            'Policy Development',
+            'Process Improvement Product Development',
+            'Production',
+            'Quality Assurance',
+            'Strategic and Global Sourcing International Business',
+            'Cost Reduction',
+            'Cost & Benefit Analysis',
+            'Expense Control'
+        ])

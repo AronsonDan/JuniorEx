@@ -4,6 +4,12 @@ from question_2.profile_extractor import ProfileExtractor
 
 
 class ProfileExtractorIndeed(ProfileExtractor):
+    def __init__(self, indeed_html_page):
+        self.delimiters = ['♦', ',']
+        self.regexPattern = '|'.join(map(re.escape, self.delimiters))
+        self.remove_from_additional_info = ['Core Competencies include: ', 'Relevant Skills']
+        super().__init__(indeed_html_page)
+
     def validate_template(self):
         self.is_valid = True
 
@@ -34,7 +40,7 @@ class ProfileExtractorIndeed(ProfileExtractor):
 
         for element in self.html_page.find_all('div', {'class': re.compile('education-section .*')}):
             self.education.append({
-                "institution_name": find_institution(element),
+                # "institution_name": find_institution(element),
                 "major": find_major(element),
                 "years": find_years(element)
             })
@@ -56,21 +62,26 @@ class ProfileExtractorIndeed(ProfileExtractor):
 
         if has_skill_text():
             skills_string = has_skill_text()
-            for skill_item in skills_string.split(','):
-                self.skills.append(skill_item)
+            self.skills = [skill_item.strip() for skill_item in skills_string.split(',')]
         else:
             skills_string = has_additional_info()
-            self.skills.append(skills_string)
+            for string_to_remove in self.remove_from_additional_info:
+                if skills_string[:len(string_to_remove)] == string_to_remove:
+                    skills_string = skills_string[len(string_to_remove):]
+            print("skills_string", re.split(self.regexPattern, skills_string))
+            self.skills = [skill.strip() for skill in re.split(self.regexPattern, skills_string)]
 
-# html_page = '/home/home/environments/pipl_test/samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html'
-# html_page = '/home/home/environments/pipl_test/samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html'
-# html_page = '/home/home/environments/pipl_test/samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html'
-# soup = ProfileExtractorIndeed(html_page)
-#
+
+
+html_page = '/home/home/environments/pipl_test/samples/indeed/Key achievements as Finance analyst - Key achievements as ... - London _ Indeed.html'
+html_page = '/home/home/environments/pipl_test/samples/indeed/OSP Site Engineer - OSP Site Engineer - London _ Indeed.html'
+html_page = '/home/home/environments/pipl_test/samples/indeed/Senior Vice President of Contemporary Sourcing - Senior Vice President of ... - New York, NY _ Indeed.html'
+soup = ProfileExtractorIndeed(html_page)
+
 # print(soup.get_name())
-# print("Printing Skills:")
-# for item in soup.skills:
-#     print(item)
-# print("Printing Education:")
-# for item in soup.education:
-#     print(item)
+print("Printing Skills:")
+for item in soup.skills:
+    print(item)
+print("Printing Education:")
+for item in soup.education:
+    print(item)

@@ -3,8 +3,8 @@ from question_2.profile_extractor import ProfileExtractor
 
 
 class ProfileExtractorLinkedIn(ProfileExtractor):
-    def __init__(self, html_page):
-        super().__init__(html_page)
+    def __init__(self, linkedin_html_page):
+        super().__init__(linkedin_html_page)
 
     def validate_template(self):
         if self.html_page.find('span', {'class': 'full-name'}):
@@ -17,21 +17,21 @@ class ProfileExtractorLinkedIn(ProfileExtractor):
         def find_institution(bs4_element):
             institution_element = bs4_element.find('h4', {'class': "summary fn org"})
             if institution_element:
-                return institution_element.text
+                return institution_element.text.strip()
             else:
                 return None
 
         def find_major(bs4_element):
             major_element = bs4_element.find('span', {'class': "major"})
             if major_element:
-                return major_element.text
+                return major_element.text.strip()
             else:
                 return None
 
         def find_years(bs4_element):
             years_element = bs4_element.find('span', {'class': "education-date"})
             if years_element:
-                return years_element.text
+                return years_element.text.strip()
             else:
                 return None
 
@@ -44,5 +44,6 @@ class ProfileExtractorLinkedIn(ProfileExtractor):
             })
 
     def set_skills(self):
-        for element in self.html_page.find_all('span', {'class': "endorse-item-name-text"}):
-            self.skills.append(element.text)
+        self.skills = [element.text.strip() for element in
+                       self.html_page.find_all('span', {'class': "endorse-item-name-text"})]
+

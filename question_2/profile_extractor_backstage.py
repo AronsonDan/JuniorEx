@@ -16,19 +16,18 @@ class ProfileExtractorBackstage(ProfileExtractor):
             self.is_valid = True
 
     def set_name(self):
-        self.name = self.profile_json['display_name']
+        self.name = self.profile_json['display_name'].strip()
 
     def set_education(self):
         for education_item in self.education_json:
             self.education.append({
-                'major': education_item['degree'],
-                'years': education_item['created_datetime'],
-                'institution_name': education_item['school']
+                'major': education_item['degree'].strip(),
+                'years': education_item['created_datetime'].strip(),
+                'institution_name': education_item['school'].strip()
             })
 
     def set_skills(self):
-        for profile_item in self.profile_json['skills']:
-            self.skills.append(profile_item['name'])
+        self.skills = [profile_item['name'].strip() for profile_item in self.profile_json['skills']]
 
     def parse_js(self):
         data = str(self.html_page.find_all("script")[9])
@@ -42,19 +41,3 @@ class ProfileExtractorBackstage(ProfileExtractor):
             self.education_json = json_object_education
         except JSONDecodeError:
             self.is_valid = False
-
-# html_page = '/home/home/environments/pipl_test/samples/backstage/Amanda Forstrom - Professional Profile, Photos, and Video Reels on Backstage -.html'
-# html_page = '/home/home/environments/pipl_test/samples/backstage/Joshua Packard - Professional Profile, Photos, and Video Reels on Backstage -.html'
-# html_page = '/home/home/environments/pipl_test/samples/backstage/Mark J. Quiles - Professional Profile, Photos, and Video Reels on Backstage -.html'
-#
-# soup = ProfileExtractorBackstage(html_page)
-#
-# print("Printing Name:", soup.get_name())
-#
-# print("Printing Skills:")
-# for item in soup.skills:
-#     print(item)
-#
-# print("Printing Education:")
-# for item in soup.education:
-#     print(item)
